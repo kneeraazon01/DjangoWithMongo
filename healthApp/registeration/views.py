@@ -11,7 +11,7 @@ class registerCreateView(CreateView):
     success_url = reverse_lazy("register")
 
 
-class userListView(ListView):
-    model = RegisterModel
-    template_name = "registeration/users.html"
-    context_object_name = "users"
+# class userListView(ListView):
+#     model = RegisterModel
+#     template_name = "registeration/users.html"
+#     context_object_name = "users"
