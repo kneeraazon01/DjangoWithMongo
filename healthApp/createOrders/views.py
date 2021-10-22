@@ -1,14 +1,18 @@
-from django.shortcuts import render, redirect
+from typing import List
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, ListView
+
 from .models import CreateOrderModel
 
-# Create your views here.
-def createOrdersView(request):
-    if request.method == "POST":
-        patient = request.POST.get("patient")
-        medicine = request.POST.get("medicine")
 
-        order = CreateOrderModel.object.create(patient=patient, medicine=medicine)
-        order.save()
-        return redirect("create_orders")
-    else:
-        return render(request, "createOrders/create_orders.html")
+class ordersCreateView(CreateView):
+    model = CreateOrderModel
+    template_name = "createOrders/create_orders.html"
+    fields = ["patient", "medicine"]
+    success_url = reverse_lazy("orders")
+
+
+# class orderListView(ListView):
+#     model = CreateOrderModel
+#     template_name = "createOrders/orders.html"
+#     context_object_name = "orders"

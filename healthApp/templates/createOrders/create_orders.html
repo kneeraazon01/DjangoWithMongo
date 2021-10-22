@@ -1,15 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html"%}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% block title %} - Home {% endblock%}
+{% block content %}
+<h1>Health App - Create Orders</h1>
 
-<body>
-    <h1>OrderPage</h1>
-</body>
 
-</html>
+<div class="btn-container">
+    <div>
+        <a href="{% url 'home' %}">
+            <button class="btn">
+                Back Home
+            </button>
+        </a>
+    </div>
+    <div>
+        <form action="{% url 'orders'%}" method="POST">
+            {% csrf_token %}
+            <div class="inputs">
+                <label for="name" class="inputlabel" >patient</label>
+                <input type="text"  class="inputfield" name="patient" required>
+            </div>
+            <div class="inputs">
+                <label  class="inputlabel" for="medicine">Address</label>
+                <input type="text" class="inputfield" name="medicine" required>
+            </div>
+
+    </div>
+    <div>
+        <a href="{% url 'orders' %}">
+            <button class="btn">
+                Order
+            </button>
+        </a>
+    </div>
+     
+    </form>
+  
+</div>
+{% endblock %}

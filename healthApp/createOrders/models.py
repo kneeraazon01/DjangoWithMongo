@@ -6,4 +6,4 @@ class CreateOrderModel(models.Model):
     medicine = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.patient
+        return f"{self.patient} is  using {self.medicine}"

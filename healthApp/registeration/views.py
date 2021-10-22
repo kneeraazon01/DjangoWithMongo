@@ -1,19 +1,17 @@
-from django.contrib import auth, messages
-from django.contrib.auth.models import User
-from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, ListView
 
 from .models import RegisterModel
 
 
-# Create your views here.
-def RegisterView(request):
-    if request.method == "POST":
-        name = request.POST.get("name")
-        address = request.POST.get("address")
+class registerCreateView(CreateView):
+    model = RegisterModel
+    template_name = "registeration/register.html"
+    fields = ["name", "address"]
+    success_url = reverse_lazy("register")
 
-        user = User.objects.create_user(name=name, address=address)
-        user.save()
-        messages.success(request, "Registered!")
-        return redirect("register")
-    else:
-        return render(request, "registeration/register.html")
+
+class userListView(ListView):
+    model = RegisterModel
+    template_name = "registeration/users.html"
+    context_object_name = "users"

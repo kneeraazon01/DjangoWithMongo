@@ -1,0 +1,24 @@
+    {% extends "base.html"%}
+  
+    {% block title %} - Home {% endblock%}
+      {% block content %}
+    <h1>Health App - Landing Page</h1>
+
+    <div class="btn-container">
+        <div>
+            <a href="{% url 'register' %}">
+                <button class="btn">
+                    Registeration
+                </button></a>
+
+        </div>
+
+        <div>
+            <a href="{% url 'orders' %}">
+                <button class="btn">
+                    Create Orders
+                </button></a>
+
+        </div>
+    </div>
+    {% endblock %}

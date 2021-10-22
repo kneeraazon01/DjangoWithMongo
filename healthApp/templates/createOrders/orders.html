@@ -1,0 +1,23 @@
+{% extends "base.html"%}
+
+{% block title %} - Orders {% endblock%}
+{% block content %}
+<h1>Health App - Registeration</h1>
+
+<div class="btn-container">
+    <div>
+        <a href="{% url 'home' %}">
+            <button class="btn">
+                Back Home
+            </button>
+        </a>
+    </div>
+   {% for order in orders %}
+   <h3>
+   <h3> {{order.name}}  is using {{order.address}} </h3>
+    </h3>
+    {% endfor %}
+</div>
+
+ 
+{% endblock %}
